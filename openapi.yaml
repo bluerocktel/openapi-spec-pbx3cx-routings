@@ -11,6 +11,82 @@ servers:
   - url: 'https://telecom0558-admin.bluerocktel.net/api'
     description: 'API Demo Server'
 paths:
+    /v1/expert-stats/{pbx}/third-party-number-history:
+      get:
+        summary: Retrieves the calls history for the third-party number
+        description: Retrieves the calls history, both inbound and outbound, for the specificid third-party number
+        operationId: get-third-party-number-history
+        tags:
+          - third-party-numbers
+        parameters:
+          - in: path
+            name: pbx
+            required: true
+            schema:
+              type: string
+            description: The pbx host name we are retrieving the data for
+          - in: path
+            name: third-party-number
+            required: true
+            schema:
+              type: string
+            description: The third-party number we want to retrieve the history for
+          - in: header
+            name: Authorization
+            required: true
+            schema:
+              type: string
+            description: Bearer
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: array
+                  description: ''
+                  minItems: 1
+                  uniqueItems: true
+                  items:
+                    $ref: '#/components/schemas/ThirdPartyNumber'
+    /v1/expert-stats/{pbx}/third-party-number-last:
+      get:
+        summary: Retrieves the last call for the third-party number
+        description: Retrieves the last call information for the specificid third-party number
+        operationId: get-third-party-number-last
+        tags:
+          - third-party-numbers
+        parameters:
+          - in: path
+            name: pbx
+            required: true
+            schema:
+              type: string
+            description: The pbx host name we are retrieving the data for
+          - in: path
+            name: third-party-number
+            required: true
+            schema:
+              type: string
+            description: The third-party number we want to retrieve the last call for
+          - in: header
+            name: Authorization
+            required: true
+            schema:
+              type: string
+            description: Bearer
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: array
+                  description: ''
+                  minItems: 1
+                  uniqueItems: true
+                  items:
+                    $ref: '#/components/schemas/ThirdPartyNumber'
     /v1/expert-stats/{pbx}/third-party-numbers-list:
       get:
         summary: Retrieves the third-party numbers.
