@@ -1,0 +1,32 @@
+    /v1/expert-stats/{pbx}/third-party-numbers-list:
+      get:
+        summary: Retrieves the third-party numbers.
+        description: Retrieves the list of third-party numbers that have been interacting with the 3cx pbx host within the period.
+        operationId: get-third-party-numbers-list
+        tags:
+          - third-party-numbers
+        parameters:
+          - in: path
+            name: pbx
+            required: true
+            schema:
+              type: string
+            description: The pbx host name we are retrieving the data for
+          - in: header
+            name: Authorization
+            required: true
+            schema:
+              type: string
+            description: Bearer
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: array
+                  description: ''
+                  minItems: 1
+                  uniqueItems: true
+                  items:
+                    $ref: '#/components/schemas/ThirdPartyNumber'

@@ -1,0 +1,12 @@
+openapi: 3.0.3
+info:
+  title: 'Pbx3cx Routings'
+  version: '1.0'
+  description: 'Pbx3cx Routings'
+  contact: 
+    name: BlueRockTEL API Team
+    url: https://api-admin.bluerocktel.com
+    email: team-api@bluerocktel.com
+servers:
+  - url: 'https://telecom0558-admin.bluerocktel.net/api'
+    description: 'API Demo Server'
